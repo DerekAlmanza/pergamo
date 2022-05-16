@@ -7,10 +7,6 @@
     android:background="#D8C1FAC3"
     tools:context=".MainActivity">
 
-    <!--android:onClick="finalCountdown" -->
-
-    <!--android:onClick="finalCountdown" -->
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -51,6 +47,7 @@
         android:id="@+id/buttonPuntuacion"
         android:layout_width="158dp"
         android:layout_height="162dp"
+        android:onClick="verPuntacion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -100,18 +97,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.836" />
-
-    <!--ImageView
-        android:id="@+id/pergamo_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.207" /-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
