@@ -23,8 +23,10 @@
         </activity>
 
         <activity android:name=".Puntos" />
-
-
+        <provider
+            android:authorities="com.example.pergamo"
+            android:name="com.example.pergamo.PuntosProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>
