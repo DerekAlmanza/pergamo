@@ -9,12 +9,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.CancellationSignal;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.DefaultLifecycleObserver;
 
 public class PuntosProvider extends ContentProvider {
 
