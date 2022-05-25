@@ -24,4 +24,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(verPuntos);
 
     }
+
+    /**
+     * Linkea el botón Ver puntuación a la pantalla Puntuación
+     * @param view
+     */
+    public void verEscanear(View view) {
+        Intent verEscaner = new Intent(this, EscanearQR.class);
+        startActivity(verEscaner);
+
+    }
 }
