@@ -1,8 +1,13 @@
 package com.example.pergamo;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -67,5 +72,21 @@ public class EscanearQR extends AppCompatActivity {
         barcodeView.decodeContinuous(eventoEscaneo);
     }
 
+    public void regresoHome(View view) {
+        Intent regreso = new Intent(this, MainActivity.class);
+        startActivity(regreso);
+    }
 
+    /**public Dialog onCreateDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view = inflater.inflate(R.layout.seccion_biblioteca, null);
+
+        builder.setView(view);
+
+        return builder.create();
+
+    }*/
 }
