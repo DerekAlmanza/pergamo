@@ -40,6 +40,7 @@ public class EscanearQR extends AppCompatActivity {
             Toast.makeText(this, "Debe otorgar el permiso para usar la cámara",
                     Toast.LENGTH_SHORT).show();
             finish();
+            return;
         }
         setContentView(R.layout.activity_escanear_qr);
         ActionBar actionBar = getSupportActionBar();
