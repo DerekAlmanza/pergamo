@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeCallback;
@@ -31,7 +32,8 @@ public class EscanearQR extends AppCompatActivity {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() == null) return;
-            Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
+            // Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
+            mostrarDialog();
         }
     };
 
@@ -77,16 +79,13 @@ public class EscanearQR extends AppCompatActivity {
         startActivity(regreso);
     }
 
-    /**public Dialog onCreateDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    public void verPista(View view) {
+        Intent pista = new Intent(this, Pista.class);
+        startActivity(pista);
+    }
 
-        LayoutInflater inflater = getLayoutInflater();
-
-        View view = inflater.inflate(R.layout.seccion_biblioteca, null);
-
-        builder.setView(view);
-
-        return builder.create();
-
-    }*/
+    public void mostrarDialog() {
+        DialogFragment newFragment = new DialogLugar();
+        newFragment.show(getSupportFragmentManager(), "MostrarDialog");
+    }
 }
