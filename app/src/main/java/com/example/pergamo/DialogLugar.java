@@ -23,10 +23,8 @@ public class DialogLugar extends DialogFragment {
         View view = inflater.inflate(R.layout.activity_dialog_lugar, null);
 
         builder.setView(view);
-
         seccion1 = view.findViewById(R.id.seccion1);
         pista = view.findViewById(R.id.pista);
-
         return builder.create();
     }
 }

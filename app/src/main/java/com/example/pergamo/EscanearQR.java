@@ -35,7 +35,7 @@ public class EscanearQR extends AppCompatActivity {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() == null) return;
-            //Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
             diferenciarPista(result);
             //mostrarDialog();
         }
@@ -120,4 +120,5 @@ public class EscanearQR extends AppCompatActivity {
                 pista.setText("Pista no encontrada");
         }
     }
+
 }
