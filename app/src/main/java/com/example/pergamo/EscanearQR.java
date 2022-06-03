@@ -28,15 +28,15 @@ import java.util.List;
 public class EscanearQR extends AppCompatActivity {
 
     private BarcodeView barcodeView;
-    //private TextView seccion1, pista;
+    private TextView seccion1, pista;
+    private DialogLugar nuevo;
 
     private BarcodeCallback eventoEscaneo = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() == null) return;
             Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
-            //diferenciarPista(result);
-            mostrarDialog();
+            diferenciarPista(result);
         }
     };
 
@@ -56,6 +56,7 @@ public class EscanearQR extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
         barcodeView = findViewById(R.id.vista_escaner_bv);
+        nuevo = mostrarDialog();
         inicializar();
     }
 
@@ -63,6 +64,7 @@ public class EscanearQR extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         barcodeView.resume();
+        nuevo.getDialog().hide();
     }
 
     @Override
@@ -87,15 +89,23 @@ public class EscanearQR extends AppCompatActivity {
         startActivity(pista);
     }
 
-    public void mostrarDialog() {
-        DialogFragment newFragment = new DialogLugar();
+    public DialogLugar mostrarDialog() {
+        DialogLugar newFragment = new DialogLugar();
         newFragment.show(getSupportFragmentManager(), "MostrarDialog");
+        return newFragment;
     }
 
-     /** public void diferenciarPista(BarcodeResult result) {
-        seccion1 = findViewById(R.id.seccion1);
-        pista = findViewById(R.id.pista);
-        switch (Integer.parseInt(result.getText())) {
+    public void diferenciarPista(BarcodeResult result) {
+        nuevo.getDialog().show();
+        seccion1 = nuevo.seccion1;
+        pista = nuevo.pista;
+        int lapista = 0;
+        try{
+            lapista = Integer.parseInt(result.getText().toString());
+        }catch(NumberFormatException nfe){
+            System.out.println("no se pudo convertir a entero " + nfe);
+        }
+        switch (lapista) { //Integer.parseInt(result.getText())
             case 1:
                 seccion1.setText("Está funcionando y llegaste a la sección 1");
                 pista.setText("Pista número 1");
@@ -107,8 +117,7 @@ public class EscanearQR extends AppCompatActivity {
             default:
                 seccion1.setText("QR no identificado correctamente");
                 pista.setText("Pista no encontrada");
-                break;
         }
-    }*/
+    }
 
 }

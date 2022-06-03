@@ -8,8 +8,10 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 public class DialogLugar extends DialogFragment {
+    public TextView seccion1, pista;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -20,7 +22,8 @@ public class DialogLugar extends DialogFragment {
         View view = inflater.inflate(R.layout.activity_dialog_lugar, null);
 
         builder.setView(view);
-
+        seccion1 = view.findViewById(R.id.seccion1);
+        pista = view.findViewById(R.id.pista);
         return builder.create();
     }
 }
