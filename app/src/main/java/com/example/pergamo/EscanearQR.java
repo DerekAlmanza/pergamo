@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -27,12 +28,14 @@ import java.util.List;
 public class EscanearQR extends AppCompatActivity {
 
     private BarcodeView barcodeView;
+    //private TextView seccion1, pista;
 
     private BarcodeCallback eventoEscaneo = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() == null) return;
-            // Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
+            //diferenciarPista(result);
             mostrarDialog();
         }
     };
@@ -88,4 +91,24 @@ public class EscanearQR extends AppCompatActivity {
         DialogFragment newFragment = new DialogLugar();
         newFragment.show(getSupportFragmentManager(), "MostrarDialog");
     }
+
+     /** public void diferenciarPista(BarcodeResult result) {
+        seccion1 = findViewById(R.id.seccion1);
+        pista = findViewById(R.id.pista);
+        switch (Integer.parseInt(result.getText())) {
+            case 1:
+                seccion1.setText("Está funcionando y llegaste a la sección 1");
+                pista.setText("Pista número 1");
+                break;
+            case 2:
+                seccion1.setText("Está funcionando y llegaste a la sección 2");
+                pista.setText("Pista número 2");
+                break;
+            default:
+                seccion1.setText("QR no identificado correctamente");
+                pista.setText("Pista no encontrada");
+                break;
+        }
+    }*/
+
 }
