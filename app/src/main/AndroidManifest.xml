@@ -18,10 +18,12 @@
             android:exported="false" />
         <activity
             android:name=".Pista"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".EscanearQR"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"

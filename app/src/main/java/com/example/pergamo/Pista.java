@@ -1,26 +1,33 @@
 package com.example.pergamo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
+import androidx.fragment.app.DialogFragment;
 
-public class Pista extends AppCompatActivity {
+public class Pista extends DialogFragment{
+
+    public TextView pista;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pista);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        android.app.AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view = inflater.inflate(R.layout.activity_pista, null);
+
+        builder.setView(view);
+
+        pista = view.findViewById(R.id.verPista);
+        return builder.create();
     }
 
-    /**
-     * Linkea el botón Ver puntuación a la pantalla Puntuación
-     * @param view
-     */
-    public void verEscanear(View view) {
-        Intent verEscaner = new Intent(this, EscanearQR.class);
-        startActivity(verEscaner);
-
-    }
 }

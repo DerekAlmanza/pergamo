@@ -30,12 +30,14 @@ public class EscanearQR extends AppCompatActivity {
     private BarcodeView barcodeView;
     private TextView seccion1, pista;
     private DialogLugar nuevo;
+    private Pista dialogPista;
 
     private BarcodeCallback eventoEscaneo = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() == null) return;
             Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
+            diferenciarLugar(result);
             diferenciarPista(result);
             //mostrarDialog();
         }
@@ -57,7 +59,8 @@ public class EscanearQR extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
         barcodeView = findViewById(R.id.vista_escaner_bv);
-        nuevo = mostrarDialog();
+        dialogPista = mostrarDialogPista();
+        nuevo = mostrarDialogLugar();
         inicializar();
     }
 
@@ -66,6 +69,7 @@ public class EscanearQR extends AppCompatActivity {
         super.onResume();
         barcodeView.resume();
         nuevo.getDialog().hide();
+        dialogPista.getDialog().hide();
     }
 
     @Override
@@ -90,34 +94,85 @@ public class EscanearQR extends AppCompatActivity {
         startActivity(pista);
     }
 
-    public DialogLugar mostrarDialog() {
+    /**
+     * Linkea el botón Ver puntuación a la pantalla Puntuación
+     * @param view
+     */
+    public void verEscanear(View view, int n) {
+        Intent verEscaner = new Intent(this, EscanearQR.class);
+        startActivity(verEscaner);
+    }
+
+    public DialogLugar mostrarDialogLugar() {
         DialogLugar newFragment = new DialogLugar();
         newFragment.show(getSupportFragmentManager(), "MostrarDialog");
         return newFragment;
     }
 
+    public Pista mostrarDialogPista() {
+        Pista newFragment = new Pista();
+        newFragment.show(getSupportFragmentManager(), "MostrarDialog");
+        return newFragment;
+    }
+
     public void diferenciarPista(BarcodeResult result) {
-        nuevo.getDialog().show();
-        seccion1 = nuevo.seccion1;
-        pista = nuevo.pista;
+        dialogPista.getDialog().show();
+        pista = dialogPista.pista;
         int lapista = 0;
         try{
             lapista = Integer.parseInt(result.getText().toString());
         }catch(NumberFormatException nfe){
             System.out.println("no se pudo convertir a entero " + nfe);
         }
-        switch (lapista) { //Integer.parseInt(result.getText())
+        switch (lapista) {
             case 1:
-                seccion1.setText("Está funcionando y llegaste a la sección 1");
                 pista.setText("Pista número 1");
                 break;
             case 2:
-                seccion1.setText("Está funcionando y llegaste a la sección 2");
                 pista.setText("Pista número 2");
+                break;
+            case 3:
+                pista.setText("Pista número 3");
+                break;
+            case 4:
+                pista.setText("Pista número 4");
+                break;
+            case 5:
+                pista.setText("Pista número 5");
+                break;
+            default:
+                pista.setText("Pista no encontrada");
+        }
+    }
+
+
+    public void diferenciarLugar(BarcodeResult result) {
+        nuevo.getDialog().show();
+        seccion1 = nuevo.seccion1;
+        int lapista = 0;
+        try{
+            lapista = Integer.parseInt(result.getText().toString());
+        }catch(NumberFormatException nfe){
+            System.out.println("no se pudo convertir a entero " + nfe);
+        }
+        switch (lapista) {
+            case 1:
+                seccion1.setText("Está funcionando y llegaste a la sección 1");
+                break;
+            case 2:
+                seccion1.setText("Está funcionando y llegaste a la sección 2");
+                break;
+            case 3:
+                seccion1.setText("Está funcionando y llegaste a la sección 3");
+                break;
+            case 4:
+                seccion1.setText("Está funcionando y llegaste a la sección 4");
+                break;
+            case 5:
+                seccion1.setText("Está funcionando y llegaste a la sección 5");
                 break;
             default:
                 seccion1.setText("QR no identificado correctamente");
-                pista.setText("Pista no encontrada");
         }
     }
 
