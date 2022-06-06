@@ -59,8 +59,8 @@ public class EscanearQR extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
         barcodeView = findViewById(R.id.vista_escaner_bv);
-        dialogPista = mostrarDialogPista();
         nuevo = mostrarDialogLugar();
+        dialogPista = mostrarDialogPista();
         inicializar();
     }
 
@@ -89,16 +89,11 @@ public class EscanearQR extends AppCompatActivity {
         startActivity(regreso);
     }
 
-    public void verPista(View view) {
-        Intent pista = new Intent(this, Pista.class);
-        startActivity(pista);
-    }
-
     /**
      * Linkea el botón Ver puntuación a la pantalla Puntuación
      * @param view
      */
-    public void verEscanear(View view, int n) {
+    public void verEscanear(View view) {
         Intent verEscaner = new Intent(this, EscanearQR.class);
         startActivity(verEscaner);
     }
