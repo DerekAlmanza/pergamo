@@ -19,8 +19,8 @@
 
         <TextView
             android:id="@+id/seccion1"
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_width="219dp"
+            android:layout_height="136dp"
             android:layout_gravity="center"
             android:text="¡Felicidades! \n Has llegado a la Hemeroteca"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:onClick="mostrarDialogPista"
             android:text="Ver Pista"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

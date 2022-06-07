@@ -20,8 +20,8 @@
 
         <TextView
             android:id="@+id/verPista"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="206dp"
+            android:layout_height="152dp"
             android:text="Hola mundo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
