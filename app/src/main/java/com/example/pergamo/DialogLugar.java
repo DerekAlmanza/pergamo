@@ -62,23 +62,27 @@ public class DialogLugar extends DialogFragment {
         }
         switch (lapista) {
             case 1:
-                pista.setText("Pista \n Camina 7 pasos hacia adelante a partir de la hemeroteca, después gira a la derecha " +
-                                "y después camina 4 pasos para encontrar la siguiente pista");
+                pista.setText("Camina 7 pasos hacia adelante a partir de la hemeroteca, después gira a la derecha " +
+                                "y después camina 4 pasos para encontrar la siguiente pista.");
                 break;
             case 2:
-                pista.setText("Pista número 2");
+                pista.setText("Camina 10 pasos hacia adelante a partir de la sección, después gira a la izquierda " +
+                             "y camina 3 pasos para encontrar la siguiente pista.");
                 break;
             case 3:
-                pista.setText("Pista número 3");
+                pista.setText("Camina 15 pasos hacia adelante a partir de la sección, después gira a la izquiersa " +
+                              "y camina 10 pasos para encontrar la siguiente pista.");
                 break;
             case 4:
-                pista.setText("Pista número 4");
+                pista.setText("A partir de la sección gira a la derecha y camina 7 pasos, después gira de nuevo a la derecha " +
+                              "y camina 4 pasos para encontrar la siguiente pista.");
                 break;
             case 5:
-                pista.setText("Pista número 5");
+                pista.setText("Camina 15 pasos hacia adelante a partir de la sección, después gira a la derecha " +
+                              "y camina 20 pasos para encontrar la siguiente pista.");
                 break;
             default:
-                pista.setText("Pista no encontrada");
+                pista.setText("El código QR escaneado es inválido o no existe una pista.");
         }
     }
 }

@@ -122,7 +122,8 @@ public class EscanearQR extends AppCompatActivity {
         }
         switch (lapista) {
             case 1:
-                seccion1.setText("Has llegado a la Hemeroteca \n En esta sección puede encontrar colecciones de revistas, diarios y publicaciones periódicas");
+                seccion1.setText("Has llegado a la Hemeroteca.\n" +
+                                 "En esta sección puede encontrar colecciones de revistas, diarios y publicaciones periódicas.");
                 break;
             case 2:
                 seccion1.setText("Está funcionando y llegaste a la sección 2");
