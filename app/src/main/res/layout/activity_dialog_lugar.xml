@@ -12,7 +12,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="189dp"
+            android:layout_height="211dp"
             android:background="@drawable/dialogos">
 
             <TextView
@@ -32,7 +32,7 @@
             <TextView
                 android:id="@+id/seccion1"
                 android:layout_width="308dp"
-                android:layout_height="83dp"
+                android:layout_height="115dp"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
                 android:text="¡Felicidades! \n Has llegado a la Hemeroteca"
@@ -41,8 +41,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.411" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/pista"

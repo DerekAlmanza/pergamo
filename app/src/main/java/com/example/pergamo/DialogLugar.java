@@ -66,19 +66,19 @@ public class DialogLugar extends DialogFragment {
                                 "y después camina 4 pasos para encontrar la siguiente pista.");
                 break;
             case 2:
-                pista.setText("Camina 10 pasos hacia adelante a partir de la sección, después gira a la izquierda " +
+                pista.setText("Camina 10 pasos hacia adelante a partir de la Sala Audiovisual, después gira a la izquierda " +
                              "y camina 3 pasos para encontrar la siguiente pista.");
                 break;
             case 3:
-                pista.setText("Camina 15 pasos hacia adelante a partir de la sección, después gira a la izquiersa " +
+                pista.setText("Camina 15 pasos hacia adelante a partir de la Sala de Cómputo, después gira a la izquierda " +
                               "y camina 10 pasos para encontrar la siguiente pista.");
                 break;
             case 4:
-                pista.setText("A partir de la sección gira a la derecha y camina 7 pasos, después gira de nuevo a la derecha " +
+                pista.setText("A partir de la Sala General gira a la derecha y camina 7 pasos, después gira de nuevo a la derecha " +
                               "y camina 4 pasos para encontrar la siguiente pista.");
                 break;
             case 5:
-                pista.setText("Camina 15 pasos hacia adelante a partir de la sección, después gira a la derecha " +
+                pista.setText("Camina 15 pasos hacia adelante a partir de la sección de Publicaciones Locales, después gira a la derecha " +
                               "y camina 20 pasos para encontrar la siguiente pista.");
                 break;
             default:

@@ -126,16 +126,20 @@ public class EscanearQR extends AppCompatActivity {
                                  "En esta sección puede encontrar colecciones de revistas, diarios y publicaciones periódicas.");
                 break;
             case 2:
-                seccion1.setText("Está funcionando y llegaste a la sección 2");
+                seccion1.setText("Has llegado a la Sala Audiovisual. \n" +
+                                "En esta sección puedes encontrar colecciones de películas.");
                 break;
             case 3:
-                seccion1.setText("Está funcionando y llegaste a la sección 3");
+                seccion1.setText("Has llegado a la Sala de Cómputo. \n" +
+                                "En esta sección puedes hacer uso de las computadoras disponibles.");
                 break;
             case 4:
-                seccion1.setText("Está funcionando y llegaste a la sección 4");
+                seccion1.setText("Has llegado a la Sala General. \n" +
+                                "En esta sección puedes encontrar textos de multiples temas, entre ellos Filosofía, Religión, Ciencias Naturales.");
                 break;
             case 5:
-                seccion1.setText("Está funcionando y llegaste a la sección 5");
+                seccion1.setText("Has llegado a la sección de Publicaciones Locales. \n"+
+                                "En esta sección encontrarás las tesis de alumnos egresados que puedes consultar en cualquier momento.");
                 break;
             default:
                 seccion1.setText("QR no identificado correctamente");
