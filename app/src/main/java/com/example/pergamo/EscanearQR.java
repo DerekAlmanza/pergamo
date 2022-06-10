@@ -34,23 +34,30 @@ public class EscanearQR extends AppCompatActivity {
 
 
     private BarcodeCallback eventoEscaneo = new BarcodeCallback() {
+
+        /**
+         * Si el resultado es nulo, return. En caso contrario, diferenciarLugar recibe el
+         * parámetro result.
+         * @param result
+         */
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() == null) return;
-            //Toast.makeText(EscanearQR.this, result.getText(), Toast.LENGTH_SHORT).show();
             diferenciarLugar(result);
         }
     };
 
+    /**
+     * Revisa el manifiesto y los permisos de la cámara, si el permiso es permitido entonces
+     * accede a la vista escanearQR, busca el id de barcodeView y asigna variables a los métodos de
+     * mostrarDialogLugar() mostrarDialogPista().
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-            // TODO Este texto debería ser un recurso de cadena
-            // TODO El texto también podría ser más descriptivo
-            //Toast.makeText(this, "Debe otorgar el permiso para usar la cámara",
-                    //Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -78,19 +85,27 @@ public class EscanearQR extends AppCompatActivity {
         super.onPause();
     }
 
+    /**
+     * Define el formato en el que se va a decodificar la información
+     * y decodifica eventoEscaneo.
+     */
     private void inicializar() {
         List<BarcodeFormat> formatoQr = Arrays.asList(BarcodeFormat.QR_CODE);
         barcodeView.setDecoderFactory(new DefaultDecoderFactory(formatoQr));
         barcodeView.decodeContinuous(eventoEscaneo);
     }
 
+    /**
+     * Linkea el botón "casita" a la pantalla principal.
+     * @param view
+     */
     public void regresoHome(View view) {
         Intent regreso = new Intent(this, MainActivity.class);
         startActivity(regreso);
     }
 
     /**
-     * Linkea el botón Ver puntuación a la pantalla Puntuación
+     * Linkea el botón Ver Escaner a la pantalla EscanearQR
      * @param view
      */
     public void verEscanear(View view) {
@@ -98,18 +113,32 @@ public class EscanearQR extends AppCompatActivity {
         startActivity(verEscaner);
     }
 
+    /**
+     * Por medio de un fragmento, muestra un dialog que brinda información acerca del
+     * lugar donde se encuentra el usuario.
+     * @return fragmento
+     */
     public DialogLugar mostrarDialogLugar() {
         DialogLugar newFragment = new DialogLugar();
         newFragment.show(getSupportFragmentManager(), "MostrarDialog");
         return newFragment;
     }
 
+    /**
+     * Por medio de un fragmento, muestra un dialog que muestra la pista correspondiente.
+     * @return fragmento
+     */
     public Pista mostrarDialogPista() {
         Pista newFragment = new Pista();
         newFragment.show(getSupportFragmentManager(), "MostrarDialog");
         return newFragment;
     }
 
+    /**
+     * A partir del result, diferencia qué código QR se está leyendo y modifica el TextView que
+     * corresponde a dar la información del lugar
+     * @param result
+     */
     public void diferenciarLugar(BarcodeResult result) {
         nuevo.setValorLectura(result.getText());
         nuevo.getDialog().show();

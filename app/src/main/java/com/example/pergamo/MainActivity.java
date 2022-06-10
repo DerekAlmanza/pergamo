@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Linkea el botón Ver puntuación a la pantalla Puntuación
+     * Linkea el botón Ver Escaner a la pantalla EscanearQR
      * @param view
      */
     public void verEscanear(View view) {
@@ -53,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Pide los permisos de la cámara para que la app funcione correctamente, en caso contrario
+     * imprime un Toast diciendo que se necesitan otorgar los permisos de la cámara para usar la
+     * aplicación.
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
