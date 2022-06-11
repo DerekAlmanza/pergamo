@@ -21,7 +21,7 @@ public class Puntos extends AppCompatActivity {
     private String puntos;
     private TextView textView;
     //
-    private Button button;
+    //private Button button;
     //
 
     @Override
@@ -44,14 +44,18 @@ public class Puntos extends AppCompatActivity {
     }
 
     public void inicializar(){
-        //pDBHelper = new PuntosDBHelper(this);
         LayoutInflater inflater = getLayoutInflater();
 
         View view = inflater.inflate(R.layout.activity_pista, null);
+
+        Button button = view.findViewById(R.id.seguirBuscando); // este botón debería de funcionar pero no funciona,
+                                                                // se encuentra en el layout actuvity_pista
+
+
         textView = (TextView) findViewById(R.id.puntos);
-        button = (Button) findViewById(R.id.insercion);
-        //Button verPuntos = view.findViewById(R.id.seguirBuscando);
-        //verPuntos.setOnClickListener(new View.OnClickListener() {
+
+        //button = (Button) findViewById(R.id.insercion); //este botón solo es de prueba, se encuentra en el layout puntuacion
+
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
