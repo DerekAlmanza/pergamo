@@ -49,8 +49,8 @@ public class EscanearQR extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
             // TODO Este texto debería ser un recurso de cadena
             // TODO El texto también podría ser más descriptivo
-            //Toast.makeText(this, "Debe otorgar el permiso para usar la cámara",
-                    //Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debe otorgar el permiso para usar la cámara",
+                    Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
