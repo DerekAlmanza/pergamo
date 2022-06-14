@@ -17,7 +17,7 @@ public class PuntosDBHelper extends SQLiteOpenHelper {
         String SQL_CREA_TABLA_PUNTOS = "CREATE TABLE " + PuntosDBContract.PuntosObtenidos.TABLE_NAME + " ("
                 + PuntosDBContract.PuntosObtenidos._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + PuntosDBContract.PuntosObtenidos.COLUMN_FECHA + " TEXT NOT NULL,"
-                + PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS + " TEXT);";
+                + PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS + " INTEGER);";
         db.execSQL(SQL_CREA_TABLA_PUNTOS);
     }
 

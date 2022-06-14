@@ -32,7 +32,7 @@ public class Puntos extends AppCompatActivity {
         inicializar();
         mostrarPuntos(this);
         textView = findViewById(R.id.puntos);
-        textView.setText(puntos+"0 pts");
+        textView.setText(puntos + "pts");
     }
 
     /**

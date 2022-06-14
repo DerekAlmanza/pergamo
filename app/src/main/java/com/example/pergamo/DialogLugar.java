@@ -21,6 +21,7 @@ public class DialogLugar extends DialogFragment {
     public Button boton;
     private Pista dialogPista;
     private String valorLectura;
+    private Button botonPista;
 
     /**
      * Crea el dialog de lugar.
@@ -42,6 +43,17 @@ public class DialogLugar extends DialogFragment {
                 diferenciarPista();
             }
         });
+
+        botonPista = view.findViewById(R.id.pista);
+        botonPista.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogPista.getDialog().show();
+                        getDialog().hide();
+                    }
+                }
+        );
 
         builder.setView(view);
         seccion1 = view.findViewById(R.id.seccion1);
@@ -79,6 +91,7 @@ public class DialogLugar extends DialogFragment {
             lapista = Integer.parseInt(valorLectura);
         }catch(NumberFormatException nfe){
             System.out.println("no se pudo convertir a entero " + nfe);
+            return;
         }
         switch (lapista) {
             case 1:
