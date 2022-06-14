@@ -22,6 +22,11 @@ public class DialogLugar extends DialogFragment {
     private Pista dialogPista;
     private String valorLectura;
 
+    /**
+     * Crea el dialog de lugar.
+     * @param savedInstanceState
+     * @return diálogo
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -43,14 +48,26 @@ public class DialogLugar extends DialogFragment {
         return builder.create();
     }
 
+    /**
+     * Setter de dialogPista
+     * @param dialogPista
+     */
     public void setDialogPista(Pista dialogPista) {
         this.dialogPista = dialogPista;
     }
 
+    /**
+     * Setter de lectura
+     * @param lectura
+     */
     public void setValorLectura(String lectura) {
         valorLectura = lectura;
     }
 
+    /**
+     * A partir del result, diferencia qué código QR se está leyendo y modifica el TextView que
+     * corresponde a dar la pista del lugar
+     */
     public void diferenciarPista() {
         dialogPista.getDialog().show();
         this.getDialog().hide();

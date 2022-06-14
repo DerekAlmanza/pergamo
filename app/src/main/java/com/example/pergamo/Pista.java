@@ -18,6 +18,11 @@ public class Pista extends DialogFragment{
     public TextView pista, texto;
     public Button boton;
 
+    /**
+     * Crea el dialog de pista.
+     * @param savedInstanceState
+     * @return diálogo
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
