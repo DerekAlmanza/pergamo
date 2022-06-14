@@ -10,6 +10,9 @@ public class PuntosDBContract {
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" +AUTHORITY);
     private PuntosDBContract() {} // constructor privadp
 
+    /**
+     * Crea la estructura de la BAse de Datos.
+     */
     public static class PuntosObtenidos implements BaseColumns {
         public static final String PATH_PUNTOS = "puntos";
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_PUNTOS).build();

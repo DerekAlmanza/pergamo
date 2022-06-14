@@ -1,6 +1,7 @@
 package com.example.pergamo;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -18,11 +19,9 @@ import android.widget.Button;
 public class Puntos extends AppCompatActivity {
 
     private String fecha;
-    private String puntos;
+    private static String puntos;
     private TextView textView;
-    //
     private Button button;
-    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -31,11 +30,13 @@ public class Puntos extends AppCompatActivity {
         getSupportActionBar().hide();
 
         inicializar();
-        mostrarPuntos();
+        mostrarPuntos(this);
+        textView = findViewById(R.id.puntos);
+        textView.setText(puntos+"0 pts");
     }
 
     /**
-     * Permite regresar a la Pantalla Principal
+     * Linkea el botón "casita" a la pantalla principal.
      * @param view
      */
     public void regresoHome(View view) {
@@ -43,56 +44,51 @@ public class Puntos extends AppCompatActivity {
         startActivity(regreso);
     }
 
+    /**
+     * Una vez que se clickea el botón ver_pista, el método obtiene la fecha en la que fueron obtenidos los puntos,
+     * al igual que inserta los puntos para finalmente mostrar los respectivos puntos.
+     */
     public void inicializar(){
-        //LayoutInflater inflater = getLayoutInflater();
-
-        //View view = inflater.inflate(R.layout.activity_pista, null);
-
-        //Button button = view.findViewById(R.id.seguirBuscando); // este botón debería de funcionar pero no funciona,
-                                                                // se encuentra en el layout activity_pista
-
         textView = (TextView) findViewById(R.id.puntos);
-
-        button = (Button) findViewById(R.id.insercion); //este botón solo es de prueba, se encuentra en el layout puntuacion
-
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                fecha = obtenerFecha();
-                puntos = "10";
-                insertarPuntos();
-                mostrarPuntos();
-            }
-        });
     }
 
-    private String obtenerFecha(){
+    /**
+     * Obtiene fecha en la que fueron obtenidos los puntos.
+     * @return fecha actual.
+     */
+    private static String obtenerFecha(){
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String fechaActual = format.format(cal.getTime());
         return fechaActual;
     }
 
-
-    private void insertarPuntos(){
+    /**
+     * Inserta los puntos en la Base de Datos.
+     */
+    public static void insertarPuntos(Context context){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(PuntosDBContract.PuntosObtenidos.COLUMN_FECHA, fecha);
-        contentValues.put(PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS, puntos);
-        Uri newUri = getContentResolver().insert(PuntosDBContract.PuntosObtenidos.CONTENT_URI, contentValues);
+        contentValues.put(PuntosDBContract.PuntosObtenidos.COLUMN_FECHA, obtenerFecha());
+        contentValues.put(PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS, 10);
+        context.getContentResolver().insert(PuntosDBContract.PuntosObtenidos.CONTENT_URI, contentValues);
     }
 
-    private void mostrarPuntos(){
+    /**
+     * Obtiene los puntos de la Base de Datos y muestra la puntuación total.
+     */
+    public static String mostrarPuntos(Context context){
         String puntosActuales = "";
         String [] projection = {PuntosDBContract.PuntosObtenidos._ID};
-        Cursor cursor = getContentResolver().query(PuntosDBContract.PuntosObtenidos.CONTENT_URI, projection, null, null, null);
+        Cursor cursor = context.getContentResolver().query(PuntosDBContract.PuntosObtenidos.CONTENT_URI, projection, null, null, null);
         int puntosColumnIndex = cursor.getColumnIndex(PuntosDBContract.PuntosObtenidos._ID);
+        int puntuacion = 0;
         while(cursor.moveToNext()){
-            int multiplicacion = puntosColumnIndex*10;
-            puntosActuales = cursor.getString(puntosColumnIndex);//puntos column index
+            puntuacion += cursor.getInt(puntosColumnIndex);
         }
-        textView = findViewById(R.id.puntos);
-        textView.setText(puntosActuales+"0 pts");
+        puntosActuales = String.valueOf(puntuacion);
+        puntos = puntosActuales;
         cursor.close();
+        return puntosActuales;
     }
 
 }

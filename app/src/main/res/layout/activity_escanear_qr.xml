@@ -26,7 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/contador_puntos_tv"
-        android:text="420"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
         android:layout_marginTop="10dp"

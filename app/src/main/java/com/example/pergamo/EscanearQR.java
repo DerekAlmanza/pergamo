@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,9 @@ public class EscanearQR extends AppCompatActivity {
     private TextView seccion1;
     private DialogLugar nuevo;
     private Pista dialogPista;
+    private Button botonPista;
+    private TextView contadorPuntosTv;
+    private int lapista;
 
 
     private BarcodeCallback eventoEscaneo = new BarcodeCallback() {
@@ -67,6 +71,18 @@ public class EscanearQR extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
         barcodeView = findViewById(R.id.vista_escaner_bv);
+        botonPista = findViewById(R.id.pista);
+        contadorPuntosTv = findViewById(R.id.contador_puntos_tv);
+        botonPista.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Puntos.insertarPuntos(EscanearQR.this);
+                        String puntuacion = Puntos.mostrarPuntos(EscanearQR.this);
+                        contadorPuntosTv.setText(puntuacion);
+                    }
+                }
+        );
         nuevo = mostrarDialogLugar();
         dialogPista = mostrarDialogPista();
         inicializar();
@@ -145,7 +161,6 @@ public class EscanearQR extends AppCompatActivity {
         nuevo.setValorLectura(result.getText());
         nuevo.getDialog().show();
         seccion1 = nuevo.seccion1;
-        int lapista = 0;
         try{
             lapista = Integer.parseInt(result.getText().toString());
         }catch(NumberFormatException nfe){
