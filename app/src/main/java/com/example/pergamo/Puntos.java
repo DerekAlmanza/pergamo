@@ -21,7 +21,7 @@ public class Puntos extends AppCompatActivity {
     private String puntos;
     private TextView textView;
     //
-    //private Button button;
+    private Button button;
     //
 
     @Override
@@ -44,17 +44,16 @@ public class Puntos extends AppCompatActivity {
     }
 
     public void inicializar(){
-        LayoutInflater inflater = getLayoutInflater();
+        //LayoutInflater inflater = getLayoutInflater();
 
-        View view = inflater.inflate(R.layout.activity_pista, null);
+        //View view = inflater.inflate(R.layout.activity_pista, null);
 
-        Button button = view.findViewById(R.id.seguirBuscando); // este botón debería de funcionar pero no funciona,
-                                                                // se encuentra en el layout actuvity_pista
-
+        //Button button = view.findViewById(R.id.seguirBuscando); // este botón debería de funcionar pero no funciona,
+                                                                // se encuentra en el layout activity_pista
 
         textView = (TextView) findViewById(R.id.puntos);
 
-        //button = (Button) findViewById(R.id.insercion); //este botón solo es de prueba, se encuentra en el layout puntuacion
+        button = (Button) findViewById(R.id.insercion); //este botón solo es de prueba, se encuentra en el layout puntuacion
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -87,13 +86,9 @@ public class Puntos extends AppCompatActivity {
         String [] projection = {PuntosDBContract.PuntosObtenidos._ID};
         Cursor cursor = getContentResolver().query(PuntosDBContract.PuntosObtenidos.CONTENT_URI, projection, null, null, null);
         int puntosColumnIndex = cursor.getColumnIndex(PuntosDBContract.PuntosObtenidos._ID);
-        System.out.println(puntosColumnIndex);
-        System.out.println("hola " + ((Object)puntosColumnIndex).getClass().getSimpleName());
         while(cursor.moveToNext()){
             int multiplicacion = puntosColumnIndex*10;
-            System.out.println(multiplicacion);
             puntosActuales = cursor.getString(puntosColumnIndex);//puntos column index
-            System.out.println(puntosActuales);
         }
         textView = findViewById(R.id.puntos);
         textView.setText(puntosActuales+"0 pts");
