@@ -16,21 +16,22 @@
             android:layout_height="279dp"
             android:background="@drawable/dialogos">
 
+
             <TextView
-                android:id="@+id/textView6"
-                android:layout_width="63dp"
-                android:layout_height="29dp"
+                android:id="@+id/texto"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="Pista"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#454444"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.521"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/textView7"
@@ -81,7 +82,7 @@
 
             <Button
                 android:id="@+id/seguirBuscando"
-                android:layout_width="95dp"
+                android:layout_width="146dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:backgroundTint="#6BA1FF"

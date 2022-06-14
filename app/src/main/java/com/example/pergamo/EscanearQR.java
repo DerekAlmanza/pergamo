@@ -58,6 +58,8 @@ public class EscanearQR extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Debe otorgar el permiso para usar la cámara",
+                    Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -169,6 +171,7 @@ public class EscanearQR extends AppCompatActivity {
             case 5:
                 seccion1.setText("Has llegado a la sección de Publicaciones Locales. \n"+
                                 "En esta sección encontrarás las tesis de alumnos egresados que puedes consultar en cualquier momento.");
+
                 break;
             default:
                 seccion1.setText("QR no identificado correctamente");

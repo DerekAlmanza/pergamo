@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.fragment.app.DialogFragment;
 
 public class Pista extends DialogFragment{
 
-    public TextView pista;
+    public TextView pista, texto;
+    public Button boton;
 
     /**
      * Crea el dialog de pista.
@@ -32,6 +34,8 @@ public class Pista extends DialogFragment{
         builder.setView(view);
 
         pista = view.findViewById(R.id.verPista);
+        texto = view.findViewById(R.id.texto);
+        boton = view.findViewById(R.id.seguirBuscando);
         return builder.create();
     }
 

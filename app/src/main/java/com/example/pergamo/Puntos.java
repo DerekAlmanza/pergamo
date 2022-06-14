@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,9 @@ public class Puntos extends AppCompatActivity {
     private String fecha;
     private String puntos;
     private TextView textView;
-    private Button boton;
+    //
+    private Button button;
+    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -28,6 +31,7 @@ public class Puntos extends AppCompatActivity {
         getSupportActionBar().hide();
 
         inicializar();
+        mostrarPuntos();
     }
 
     /**
@@ -40,13 +44,24 @@ public class Puntos extends AppCompatActivity {
     }
 
     public void inicializar(){
-        //pDBHelper = new PuntosDBHelper(this);
+        //LayoutInflater inflater = getLayoutInflater();
+
+        //View view = inflater.inflate(R.layout.activity_pista, null);
+
+        //Button button = view.findViewById(R.id.seguirBuscando); // este botón debería de funcionar pero no funciona,
+                                                                // se encuentra en el layout activity_pista
+
         textView = (TextView) findViewById(R.id.puntos);
-        boton.setOnClickListener(new View.OnClickListener() {
+
+        button = (Button) findViewById(R.id.insercion); //este botón solo es de prueba, se encuentra en el layout puntuacion
+
+        button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 fecha = obtenerFecha();
+                puntos = "10";
                 insertarPuntos();
+                mostrarPuntos();
             }
         });
     }
@@ -67,13 +82,16 @@ public class Puntos extends AppCompatActivity {
     }
 
     private void mostrarPuntos(){
-        String [] projection = {PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS};
+        String puntosActuales = "";
+        String [] projection = {PuntosDBContract.PuntosObtenidos._ID};
         Cursor cursor = getContentResolver().query(PuntosDBContract.PuntosObtenidos.CONTENT_URI, projection, null, null, null);
-        int puntosColumnIndex = cursor.getColumnIndex(PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS);
+        int puntosColumnIndex = cursor.getColumnIndex(PuntosDBContract.PuntosObtenidos._ID);
         while(cursor.moveToNext()){
-            String puntosActuales = cursor.getString(puntosColumnIndex);
-            textView.append((puntos));
+            int multiplicacion = puntosColumnIndex*10;
+            puntosActuales = cursor.getString(puntosColumnIndex);//puntos column index
         }
+        textView = findViewById(R.id.puntos);
+        textView.setText(puntosActuales+"0 pts");
         cursor.close();
     }
 

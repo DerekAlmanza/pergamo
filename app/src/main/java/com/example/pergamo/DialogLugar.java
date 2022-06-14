@@ -17,7 +17,8 @@ import org.w3c.dom.Text;
 
 public class DialogLugar extends DialogFragment {
 
-    public TextView seccion1, pista;
+    public TextView seccion1, pista, texto;
+    public Button boton;
     private Pista dialogPista;
     private String valorLectura;
 
@@ -71,6 +72,8 @@ public class DialogLugar extends DialogFragment {
         dialogPista.getDialog().show();
         this.getDialog().hide();
         pista = dialogPista.pista;
+        texto = dialogPista.texto;
+        boton = dialogPista.boton;
         int lapista = 0;
         try{
             lapista = Integer.parseInt(valorLectura);
@@ -95,8 +98,10 @@ public class DialogLugar extends DialogFragment {
                               "y camina 4 pasos para encontrar la siguiente pista.");
                 break;
             case 5:
-                pista.setText("Camina 15 pasos hacia adelante a partir de la sección de Publicaciones Locales, después gira a la derecha " +
-                              "y camina 20 pasos para encontrar la siguiente pista.");
+                texto.setText("¡Felicidades!");
+                pista.setText("Has encontrado todas las pistas y por lo tanto has terminado la búsqueda");
+                boton.setText("Iniciar nueva búsqueda");
+
                 break;
             default:
                 pista.setText("El código QR escaneado es inválido o no existe una pista.");
