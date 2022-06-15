@@ -36,21 +36,12 @@ public class DialogLugar extends DialogFragment {
 
         View view = inflater.inflate(R.layout.activity_dialog_lugar, null);
 
-        Button verPista = view.findViewById(R.id.pista);
-        verPista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                diferenciarPista();
-            }
-        });
-
         botonPista = view.findViewById(R.id.pista);
         botonPista.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialogPista.getDialog().show();
-                        getDialog().hide();
+                        diferenciarPista();
                     }
                 }
         );
