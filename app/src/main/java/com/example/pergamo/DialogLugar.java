@@ -50,6 +50,7 @@ public class DialogLugar extends DialogFragment {
 
         builder.setView(view);
         seccion1 = view.findViewById(R.id.seccion1);
+        setCancelable(false);
         return builder.create();
     }
 

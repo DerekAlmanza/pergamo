@@ -75,7 +75,6 @@ public class EscanearQR extends AppCompatActivity {
         nuevo = mostrarDialogLugar();
         dialogPista = mostrarDialogPista();
         inicializar();
-
     }
 
     @Override
@@ -118,10 +117,10 @@ public class EscanearQR extends AppCompatActivity {
      * Linkea el botón Ver Escaner a la pantalla EscanearQR
      * @param view
      */
-    public void verEscanear(View view) {
+    /**public void verEscanear(View view) {
         Intent verEscaner = new Intent(this, EscanearQR.class);
         startActivity(verEscaner);
-    }
+    }*/
 
     /**
      * Por medio de un fragmento, muestra un dialog que brinda información acerca del
@@ -142,6 +141,10 @@ public class EscanearQR extends AppCompatActivity {
         Pista newFragment = new Pista();
         newFragment.show(getSupportFragmentManager(), "MostrarDialog");
         return newFragment;
+    }
+
+    public void inciarEscaneo(){
+        barcodeView.decodeSingle(eventoEscaneo);
     }
 
     /**

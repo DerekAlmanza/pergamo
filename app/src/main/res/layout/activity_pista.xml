@@ -89,7 +89,6 @@
                 android:elevation="20dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:insetTop="6dp"
-                android:onClick="verEscanear"
                 android:text="Seguir Buscando"
                 android:textColor="@color/white"
                 android:textSize="10sp"
