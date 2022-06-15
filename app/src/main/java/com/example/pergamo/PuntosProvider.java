@@ -27,12 +27,25 @@ public class PuntosProvider extends ContentProvider {
         CONTENT_MATCHER.addURI(PuntosDBContract.AUTHORITY,PuntosDBContract.PuntosObtenidos.PATH_PUNTOS +"/#", COLECCION_PUNTOS_CON_ID);
     }
 
+    /**
+     * Obtiene la tabla creada en PuntosDBHelper
+     * @return true
+     */
     @Override
     public boolean onCreate() {
         dbHelper = new PuntosDBHelper(getContext());
         return true;
     }
 
+    /**
+     * Se encarga de obtener la información de la tabla para poder realizar las consultas de la base de datos
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return resultado de la búsqueda
+     */
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
@@ -56,6 +69,12 @@ public class PuntosProvider extends ContentProvider {
         return result;
     }
 
+    /**
+     * Inserta nueva información a la base de datos
+     * @param uri
+     * @param contentValues
+     * @return El elemento insertado por medio del ID.
+     */
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues contentValues) {
@@ -93,6 +112,11 @@ public class PuntosProvider extends ContentProvider {
         return 0;
     }
 
+    /**
+     * Método auxiliar que reconoce los puntos obtenidos que tienen su id y obtiene qué tipo de dato es.
+     * @param uri
+     * @return El tipo de datos de los puntos obtenidos.
+     */
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {

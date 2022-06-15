@@ -12,6 +12,10 @@ public class PuntosDBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Define los atributos que tendrá la tabla de base de datos.
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String SQL_CREA_TABLA_PUNTOS = "CREATE TABLE " + PuntosDBContract.PuntosObtenidos.TABLE_NAME + " ("
