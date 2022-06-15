@@ -28,7 +28,7 @@ import java.util.List;
 
 public class EscanearQR extends AppCompatActivity {
 
-    private BarcodeView barcodeView;
+    public BarcodeView barcodeView;
     private TextView seccion1;
     private DialogLugar nuevo;
     private Pista dialogPista;
@@ -75,6 +75,7 @@ public class EscanearQR extends AppCompatActivity {
         nuevo = mostrarDialogLugar();
         dialogPista = mostrarDialogPista();
         inicializar();
+
     }
 
     @Override
@@ -99,7 +100,9 @@ public class EscanearQR extends AppCompatActivity {
     private void inicializar() {
         List<BarcodeFormat> formatoQr = Arrays.asList(BarcodeFormat.QR_CODE);
         barcodeView.setDecoderFactory(new DefaultDecoderFactory(formatoQr));
-        barcodeView.decodeContinuous(eventoEscaneo);
+        //barcodeView.decodeContinuous(eventoEscaneo);
+        barcodeView.decodeSingle(eventoEscaneo);
+
     }
 
     /**

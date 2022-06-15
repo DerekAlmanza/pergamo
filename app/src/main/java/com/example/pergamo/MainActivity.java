@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     public void verEscanear(View view) {
         Intent verEscaner = new Intent(this, EscanearQR.class);
         startActivity(verEscaner);
-
     }
 
     /**

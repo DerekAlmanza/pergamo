@@ -18,10 +18,8 @@ import android.widget.Button;
 
 public class Puntos extends AppCompatActivity {
 
-    private String fecha;
     private static String puntos;
     private TextView textView;
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -78,9 +76,9 @@ public class Puntos extends AppCompatActivity {
      */
     public static String mostrarPuntos(Context context){
         String puntosActuales = "";
-        String [] projection = {PuntosDBContract.PuntosObtenidos._ID};
+        String [] projection = {PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS};
         Cursor cursor = context.getContentResolver().query(PuntosDBContract.PuntosObtenidos.CONTENT_URI, projection, null, null, null);
-        int puntosColumnIndex = cursor.getColumnIndex(PuntosDBContract.PuntosObtenidos._ID);
+        int puntosColumnIndex = cursor.getColumnIndex(PuntosDBContract.PuntosObtenidos.COLUMN_PUNTOS_OBTENIDOS);
         int puntuacion = 0;
         while(cursor.moveToNext()){
             puntuacion += cursor.getInt(puntosColumnIndex);
